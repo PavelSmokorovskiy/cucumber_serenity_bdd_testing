@@ -13,5 +13,6 @@ public class TestBrowser {
         WebDriver driver=new ChromeDriver();
         driver.get("http://localhost:4200/");
         driver.close();
+        driver.quit();
     }
 }

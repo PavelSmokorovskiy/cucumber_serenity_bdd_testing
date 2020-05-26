@@ -16,8 +16,8 @@ public class SearchPage extends PageObject {
         this.driver = driver;
     }
 
-    boolean atPage() {
-        return driver.getTitle().equals("API MARKETPLACE");
+    public boolean atPage() {
+        return driver.getTitle().equals("API Marketplace");
     }
 
     public SearchPage searchOnPage(){
