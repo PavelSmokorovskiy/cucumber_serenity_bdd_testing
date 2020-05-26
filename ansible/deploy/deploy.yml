@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+  - include_role:
+      name: merlin-service-deploy-lib/s3
+    vars:
+      s3_delete_before_copy: 'True'
+
+  - include_role:
+      name: merlin-service-deploy-lib/upload-docker-image
+
+  - include_role:
+      name: merlin-service-deploy-lib/cf-deploy
+    vars:
+      cloud_formation: "files/cf_task_def.yaml"
+      stack_name: "{{ parameters['EnvironmentNameUpper'] }}-TaskDef-{{ parameters['ServiceName'] }}-stack"
+      local_parameters:
+        TestReportBucketName: "{{ s3_bucket_name }}"
+
+  - name: read task definition arn
+    shell: aws cloudformation describe-stacks \
+      --region {{ parameters['Region'] }} \
+      --stack-name {{ parameters['EnvironmentNameUpper'] }}-TaskDef-{{ parameters['ServiceName'] }}-stack \
+      --query 'Stacks[0].Outputs[?OutputKey==`TaskDefinition`].OutputValue' --output text
+    register: task_def_arn
+
+  - name: run testsuite container task
+    shell: aws ecs run-task \
+      --task-definition {{ task_def_arn }} \
+      --cluster arn:aws:ecs:{{ parameters['Region'] }}:{{ parameters['Account'] }}:cluster/{{ parameters['EnvironmentNameUpper'] }}-app

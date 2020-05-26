@@ -1,0 +1,76 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "ECS Service without LoadBalancer"
+Parameters:
+  EnvironmentBaseUpper:
+    Type: String
+    Default: ''
+  EnvironmentNameUpper:
+    Type: String
+  EnvironmentNameLower:
+    Type: String
+  ServiceName:
+    Type: String
+  EnvironmentZoneUpper:
+    Type: String
+  EnvironmentZoneLower:
+    Type: String
+  DockerImageUrl:
+    Type: String
+  RoleName:
+    Type: String
+  TestReportBucketName:
+    Type: String
+  # constants
+  MaxMemory:
+    Type: Number
+    Default: 1024
+  LogDriver:
+    Type: String
+    Default: cloudwatch
+    AllowedValues:
+    - cloudwatch
+    - elk
+  LogDriverMaxSize:
+    Type: String
+    Default: 10m
+    Description: The maximum size of the log before it is rolled. A positive integer plus a modifier representing the unit of measure (k, m, or g). Applies only to the elk log driver.
+  LogDriverMaxFile:
+    Type: Number
+    Default: 10
+    Description: The maximum number of log files that can be present. If rolling the logs creates excess files, the oldest file is removed. Applies only to the elk log driver.
+
+Conditions:
+  HasELkLogDriver: !Equals [!Ref LogDriver, 'elk']
+
+Resources:
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub ${EnvironmentNameUpper}-${ServiceName}-logs
+      RetentionInDays: 30
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub ${EnvironmentNameUpper}-${ServiceName}
+      TaskRoleArn: !Ref RoleName
+      ContainerDefinitions:
+      - Name: !Sub ${EnvironmentNameUpper}-${ServiceName}
+        Essential: true
+        Image: !Ref DockerImageUrl
+        Memory: !Ref MaxMemory
+        MemoryReservation: !Ref MaxMemory
+        Environment:
+        - Name: 'TEST_REPORT_BUCKET_NAME'
+          Value: !Ref TestReportBucketName
+        LogConfiguration: !If
+        - HasELkLogDriver
+        - LogDriver: json-file
+          Options:
+            max-size: !Ref LogDriverMaxSize
+            max-file: !Ref LogDriverMaxFile
+        - LogDriver: awslogs
+          Options:
+            awslogs-group: !Sub ${EnvironmentNameUpper}-${ServiceName}-logs
+            awslogs-region: !Ref AWS::Region
+            awslogs-stream-prefix: !Ref ServiceName
