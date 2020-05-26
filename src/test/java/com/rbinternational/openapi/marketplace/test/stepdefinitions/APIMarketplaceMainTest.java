@@ -1,6 +1,6 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.stepdefinitions.pages.SearchPage;
+import com.rbinternational.openapi.marketplace.test.stepdefinitions.pages.APIMarketplaceMainPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -12,11 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
-public class SearchTest {
+public class APIMarketplaceMainTest {
 
     private static WebDriver driver;
     private static final String URL = "http://localhost:4200/";
-    private SearchPage page;
+    private APIMarketplaceMainPage page;
 
     @BeforeClass
     public static void setUp() {
@@ -28,7 +28,7 @@ public class SearchTest {
 
     @Before
     public void pageSetUp(){
-        page = new SearchPage(driver);
+        page = new APIMarketplaceMainPage(driver);
     }
 
     @Test

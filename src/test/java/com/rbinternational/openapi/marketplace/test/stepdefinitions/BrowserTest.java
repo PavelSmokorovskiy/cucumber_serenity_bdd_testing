@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestBrowser {
+public class BrowserTest {
 
     @Test
     public void openChromeTest() throws Exception{

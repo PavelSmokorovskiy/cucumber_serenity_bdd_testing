@@ -1,11 +1,11 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions.steps;
 
-import com.rbinternational.openapi.marketplace.test.stepdefinitions.pages.SearchPage;
+import com.rbinternational.openapi.marketplace.test.stepdefinitions.pages.APIMarketplaceMainPage;
 import net.thucydides.core.annotations.Step;
 
-public class SearchSteps {
+public class APIMarketplaceMainSteps {
 
-    SearchPage page;
+    APIMarketplaceMainPage page;
 
     @Step
     public void openPage(){

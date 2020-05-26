@@ -6,13 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 @DefaultUrl("http://localhost:4200/")
-public class SearchPage extends PageObject {
+public class APIMarketplaceMainPage extends PageObject {
 
     private final WebDriver driver;
     private final By apiCategoriesButton = By.cssSelector("a.header__link#api-categories");
     private final By anotherButton = By.xpath("//a[@data-testid='api-categories']");
 
-    public SearchPage(WebDriver driver) {
+    public APIMarketplaceMainPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -20,7 +20,7 @@ public class SearchPage extends PageObject {
         return driver.getTitle().equals("API Marketplace");
     }
 
-    public SearchPage searchOnPage(){
+    public APIMarketplaceMainPage searchOnPage(){
         driver.findElement(anotherButton);
         return this;
     }
