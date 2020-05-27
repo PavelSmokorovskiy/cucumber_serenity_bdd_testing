@@ -1,4 +1,4 @@
-package com.rbinternational.openapi.marketplace.test.stepdefinitions;
+package com.rbinternational.openapi.marketplace.test.seleniumtest;
 
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
