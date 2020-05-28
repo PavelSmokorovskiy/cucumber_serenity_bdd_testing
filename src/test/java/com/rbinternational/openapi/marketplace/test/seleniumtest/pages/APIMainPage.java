@@ -9,8 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class APIMainPage extends PageObject {
 
     private final WebDriver driver;
-    private final By apiCategoriesButtonCss = By.cssSelector("a.header__link#api-categories");
-    private final By apiCategoriesButtonXpath = By.xpath("//a[@data-testid='api-categories']");
+    private final By apiCategoriesButton = By.cssSelector("a.header__link");
 
     public APIMainPage(WebDriver driver) {
         this.driver = driver;
@@ -18,10 +17,5 @@ public class APIMainPage extends PageObject {
 
     public boolean atPage(String title) {
         return driver.getTitle().equals(title);
-    }
-
-    public APIMainPage searchOnPage(By by){
-        driver.findElement(by);
-        return this;
     }
 }
