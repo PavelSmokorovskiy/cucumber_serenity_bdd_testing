@@ -6,25 +6,38 @@
     vars:
       s3_delete_before_copy: 'True'
 
+  - name: process bucket policy template
+    template: src={{ item }} dest=./{{ item | basename | regex_replace('\.j2','') }}
+    with_fileglob:
+    - '../templates/*.j2'
+
+  - name: update bucket policy
+    shell: aws s3api put-bucket-policy \
+      --bucket {{ s3_bucket_name }} \
+      --policy file://bucket_policy.json
+
   - include_role:
       name: merlin-service-deploy-lib/upload-docker-image
+
+  - set_fact:
+      taskdef_stack_name: "{{ parameters['EnvironmentNameUpper'] }}-TaskDef-{{ parameters['ServiceName'] }}-stack"
 
   - include_role:
       name: merlin-service-deploy-lib/cf-deploy
     vars:
-      cloud_formation: "files/cf_task_def.yaml"
-      stack_name: "{{ parameters['EnvironmentNameUpper'] }}-TaskDef-{{ parameters['ServiceName'] }}-stack"
+      cloud_formation: "files/cf_task_def.yml"
+      stack_name: "{{ taskdef_stack_name }}"
       local_parameters:
         TestReportBucketName: "{{ s3_bucket_name }}"
 
-  - name: read task definition arn
-    shell: aws cloudformation describe-stacks \
-      --region {{ parameters['Region'] }} \
-      --stack-name {{ parameters['EnvironmentNameUpper'] }}-TaskDef-{{ parameters['ServiceName'] }}-stack \
-      --query 'Stacks[0].Outputs[?OutputKey==`TaskDefinition`].OutputValue' --output text
-    register: task_def_arn
+  - cloudformation_info:
+      region: "{{ parameters['Region'] }}"
+      stack_name: "{{ taskdef_stack_name }}"
+      stack_resources: true
+    register: taskdef_stackinfo
 
   - name: run testsuite container task
     shell: aws ecs run-task \
-      --task-definition {{ task_def_arn }} \
-      --cluster arn:aws:ecs:{{ parameters['Region'] }}:{{ parameters['Account'] }}:cluster/{{ parameters['EnvironmentNameUpper'] }}-app
+      --region {{ parameters['Region'] }}
+      --task-definition {{ taskdef_stackinfo.cloudformation[taskdef_stack_name].stack_resources['TaskDefinition'] }} \
+      --cluster arn:aws:ecs:{{ parameters['Region'] }}:{{ parameters['AccountId'] }}:cluster/{{ parameters['EnvironmentNameUpper'] }}-app

@@ -1,0 +1,46 @@
+{
+  "Version": "2012-10-17",
+  "Id": "BucketPolicyWeb",
+  "Statement": [
+  {
+    "Sid": "PrivateCDN",
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": "arn:aws:iam::{{ parameters['AccountId'] }}:role/{{ parameters['EnvironmentName'] }}-merlin-cdn-svc-Role"
+    },
+    "Action": [
+      "s3:GetObject",
+      "s3:ListBucket"
+    ],
+    "Resource": [
+      "arn:aws:s3:::{{ parameters['AccountId'] }}-{{ parameters['EnvironmentNameLower'] }}-{{ parameters['ServiceName'] }}/*",
+      "arn:aws:s3:::{{ parameters['AccountId'] }}-{{ parameters['EnvironmentNameLower'] }}-{{ parameters['ServiceName'] }}"
+    ]
+  },
+  {
+    "Sid": "TestReportBatch",
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": "arn:aws:iam::{{ parameters['AccountId'] }}:role/{{ parameters['EnvironmentName'] }}-{{ parameters['ServiceName'] }}-Role"
+    },
+    "Action": [
+      "s3:PutObject",
+      "s3:PutObjectAcl",
+      "s3:ListBucket"
+    ],
+    "Resource": [
+      "arn:aws:s3:::{{ parameters['AccountId'] }}-{{ parameters['EnvironmentNameLower'] }}-{{ parameters['ServiceName'] }}/*",
+      "arn:aws:s3:::{{ parameters['AccountId'] }}-{{ parameters['EnvironmentNameLower'] }}-{{ parameters['ServiceName'] }}"
+    ]
+  },
+  {
+    "Sid": "Admin",
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": "arn:aws:iam::{{ parameters['AccountId'] }}:role/{{ parameters['EnvironmentZoneUpper'] }}-AdminRole"
+    },
+    "Action": "s3:*",
+    "Resource": "arn:aws:s3:::{{ parameters['AccountId'] }}-{{ parameters['EnvironmentNameLower'] }}-{{ parameters['ServiceName'] }}/*"
+  }
+  ]
+}

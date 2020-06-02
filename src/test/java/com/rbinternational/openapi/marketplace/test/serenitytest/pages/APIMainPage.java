@@ -12,7 +12,7 @@ import java.util.List;
 public class APIMainPage extends PageObject {
 
     private final By apiCategoriesLink = By.cssSelector("a.header__link");
-    private final By apiCard = By.cssSelector("div.card__title");
+    private final By apiCard = By.cssSelector("div.uk-card-title");
 
     public boolean atPage(String title) {
         return getTitle().equals(title);
