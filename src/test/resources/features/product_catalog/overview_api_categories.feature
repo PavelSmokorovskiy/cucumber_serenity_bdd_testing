@@ -8,9 +8,9 @@ Feature: Overview Api Categories
     Given John has opened the Marketplace Portal
     When John requests a list of API-categories
     Then he should see on overview of the following API-categories
-      | category              |
-      | Accounts              |
-      | Payments              |
-      | Confirmation of Funds |
-      | Currency              |
+#      | category              |
+#      | Accounts              |
+#      | Payments              |
+#      | Confirmation of Funds |
+#      | Currency              |
 
