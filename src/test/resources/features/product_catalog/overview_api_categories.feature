@@ -7,10 +7,12 @@ Feature: Overview Api Categories
   Scenario: List available PSD2 APIS
     Given John has opened the Marketplace Portal
     When John requests a list of API-categories
-    Then he should see on overview of the following API-categories
-      | category              |
-      | Accounts              |
-      | Payments              |
-      | Confirmation of Funds |
-      | Currency              |
-
+    Then he should see on overview of the following API<categories>
+      | Customer Information        |
+      | ERP Integration             |
+      | Payments                    |
+      | Confirmation of Funds       |
+      | Currency                    |
+      | General Information Service |
+      | Authorization               |
+      | Lead Generation             |
