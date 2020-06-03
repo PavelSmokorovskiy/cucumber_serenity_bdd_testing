@@ -12,7 +12,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 
-public class OverviewApiCategoriesStepdefs {
+public class OverviewApiCategoriesStepsDefs {
 
     @Steps
     MarketplacePortalHomeSteps marketplacePortalHomeSteps;
