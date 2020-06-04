@@ -27,7 +27,7 @@
         <encoding>UTF-8</encoding>
         <tags></tags>
         <parallel.tests>4</parallel.tests>
-        <webdriver.base.url></webdriver.base.url>
+        <webdriver.base.url>${env.WEBDRIVER_BASE_URL}</webdriver.base.url>
     </properties>
 
     <repositories>

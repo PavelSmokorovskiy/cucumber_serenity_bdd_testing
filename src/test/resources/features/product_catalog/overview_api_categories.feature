@@ -16,3 +16,4 @@ Feature: Overview Api Categories
       | General Information Service |
       | Authorization               |
       | Lead Generation             |
+      | Accounts                    |
