@@ -1,7 +1,6 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
 import com.rbinternational.openapi.marketplace.test.steps.CreateAccountSteps;
-//import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,6 +26,7 @@ public class CreateAccountStepdefs {
 
     @Then("^he should be taken to a sign-up form view$")
     public void heShouldBeTakenToSignUpFormView() {
-//        assertThat();
+        assertThat("after create account page is done, the behavior of the assert will be changed"
+                , createAccountSteps.doesContainCreateAccountPageLink());
     }
 }

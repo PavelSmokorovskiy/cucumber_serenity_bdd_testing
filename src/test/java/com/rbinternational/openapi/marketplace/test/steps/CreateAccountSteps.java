@@ -17,4 +17,9 @@ public class CreateAccountSteps extends UIInteractionSteps {
     public void clickRegisterLoginButton() {
         $(marketplacePortalHomePage.registerLoginButton).click();
     }
+
+    @Step("Does button contain create account page link")
+    public boolean doesContainCreateAccountPageLink() {
+        return $(marketplacePortalHomePage.registerLoginButtonHref).isDisplayed();
+    }
 }
