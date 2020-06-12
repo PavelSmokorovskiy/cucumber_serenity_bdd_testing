@@ -12,7 +12,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 
-public class OverviewApiCategoriesStepsDefs {
+public class OverviewApiCategoriesStepdefs {
 
     @Steps
     MarketplacePortalHomeSteps marketplacePortalHomeSteps;
@@ -29,6 +29,7 @@ public class OverviewApiCategoriesStepsDefs {
 
     @When("^John requests a list of API-categories$")
     public void johnRequestsAListOfAPICategories() {
+        marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
         marketplacePortalHomeSteps.clickAPICategoriesButton();
         apiCards = apiCategoriesSteps.findAPICategories();
     }
