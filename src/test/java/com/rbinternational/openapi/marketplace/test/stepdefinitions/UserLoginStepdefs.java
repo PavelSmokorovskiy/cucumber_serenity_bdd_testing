@@ -2,11 +2,14 @@ package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
 import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
 import com.rbinternational.openapi.marketplace.test.steps.UserLoginSteps;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
+
+import java.util.List;
 
 public class UserLoginStepdefs {
 
@@ -26,9 +29,12 @@ public class UserLoginStepdefs {
         marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
         marketplacePortalHomeSteps.clickRegisterLoginButton();
     }
-    @And("he enters Email as \"<email>\" and Password as \"<password>\"")
-    public void test() {
 
+    @And("he enters Email as \"<email>\" and Password as \"<password>\"")
+    public void test(DataTable table) {
+        List<List<String>> rows = table.asLists(String.class);
+        userLoginSteps.writeEmail(rows.get(0).get(0));
+        userLoginSteps.writePassword(rows.get(0).get(1));
     }
 
     @Then("^he should see his name and last name displayed confirming he is logged-in$")
