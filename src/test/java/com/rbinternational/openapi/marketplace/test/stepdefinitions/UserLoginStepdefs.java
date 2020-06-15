@@ -1,24 +1,39 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
-//import io.cucumber.java.PendingException;
+import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
+import com.rbinternational.openapi.marketplace.test.steps.UserLoginSteps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.thucydides.core.annotations.Steps;
 
 public class UserLoginStepdefs {
 
-  @Given("^John has opened the Marketplace Portal to log in$")
-  public void johnHasOpenedTheMarketplacePortalToLogin() {
-//    throw new PendingException();
-  }
+    @Steps
+    private MarketplacePortalHomeSteps marketplacePortalHomeSteps;
 
-  @When("^John requests to log in$")
-  public void johnRequestsToLogIn() {
-//    throw new PendingException();
-  }
+    @Steps
+    private UserLoginSteps userLoginSteps;
 
-  @Then("^he should see his name and last name displayed confirming he is logged-in$")
-  public void heShouldSeeHisFirstAndLastName() {
-//    throw new PendingException();
-  }
+    @Given("^John has opened the Marketplace Portal to log in$")
+    public void johnHasOpenedTheMarketplacePortalToLogin() {
+        marketplacePortalHomeSteps.openMarketplacePortalHome();
+    }
+
+    @When("^John requests to log in$")
+    public void johnRequestsToLogIn() {
+        marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
+        marketplacePortalHomeSteps.clickRegisterLoginButton();
+    }
+    @And("he enters Email as \"<email>\" and Password as \"<password>\"")
+    public void test() {
+
+    }
+
+    @Then("^he should see his name and last name displayed confirming he is logged-in$")
+    public void heShouldSeeHisFirstAndLastName() {
+        //Temporary solution should be added with name and last name confirming
+        userLoginSteps.isSignInButtonDisplayed();
+    }
 }

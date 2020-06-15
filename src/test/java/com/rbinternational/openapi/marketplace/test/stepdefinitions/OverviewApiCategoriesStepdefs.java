@@ -15,12 +15,12 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 public class OverviewApiCategoriesStepdefs {
 
     @Steps
-    MarketplacePortalHomeSteps marketplacePortalHomeSteps;
+    private MarketplacePortalHomeSteps marketplacePortalHomeSteps;
 
     @Steps
-    APICategoriesSteps apiCategoriesSteps;
+    private APICategoriesSteps apiCategoriesSteps;
 
-    List<String> apiCards;
+    private List<String> apiCards;
 
     @Given("^John has opened the Marketplace Portal$")
     public void johnHasOpenedTheMarketplacePortal() {

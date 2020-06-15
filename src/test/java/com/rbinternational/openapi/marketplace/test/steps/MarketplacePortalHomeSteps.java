@@ -17,4 +17,9 @@ public class MarketplacePortalHomeSteps extends UIInteractionSteps {
     public void clickAPICategoriesButton() {
         $(marketplacePortalHomePage.apiCategoriesLink).click();
     }
+
+    @Step("Click to the API Categories button")
+    public void clickRegisterLoginButton() {
+        $(marketplacePortalHomePage.registerLoginButton).click();
+    }
 }

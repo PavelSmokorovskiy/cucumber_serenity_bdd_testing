@@ -1,6 +1,7 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
 import com.rbinternational.openapi.marketplace.test.steps.CreateAccountSteps;
+import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,17 +10,20 @@ import net.thucydides.core.annotations.Steps;
 public class CreateAccountStepdefs {
 
     @Steps
+    private MarketplacePortalHomeSteps marketplacePortalHomeSteps;
+
+    @Steps
     private CreateAccountSteps createAccountSteps;
 
     @Given("^John has opened the Marketplace Portal to create an account$")
     public void johnHasOpenedTheMarketplacePortalToCreateAnAccount() {
-        createAccountSteps.openMarketplacePortalHome();
+        marketplacePortalHomeSteps.openMarketplacePortalHome();
     }
 
     @When("^John requests to sign up$")
     public void johnRequestsToSignUp() {
-        createAccountSteps.waitForAngularRequestsToFinish();
-        createAccountSteps.clickRegisterLoginButton();
+        marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
+        marketplacePortalHomeSteps.clickRegisterLoginButton();
     }
 
     @Then("^he should be taken to a sign-up form view$")
