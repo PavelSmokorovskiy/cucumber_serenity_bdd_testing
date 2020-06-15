@@ -22,9 +22,9 @@ public class CreateAccountSteps extends UIInteractionSteps {
         $(marketplacePortalHomePage.registerLoginButton).click();
     }
 
-    @Step("Does button contain create account page link")
+    @Step("Is Sing Up link displayed")
     public void isSignUpLinkDisplayed() {
-        getDriver().switchTo().window(new ArrayList<>(getDriver().getWindowHandles()).get(1));
+        getDriver().switchTo().window(new ArrayList<String>(getDriver().getWindowHandles()).get(1));
         $(authorizationPage.singUpLink).isDisplayed();
     }
 }
