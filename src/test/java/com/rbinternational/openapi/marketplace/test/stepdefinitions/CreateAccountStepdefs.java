@@ -6,8 +6,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class CreateAccountStepdefs {
 
     @Steps
@@ -26,7 +24,6 @@ public class CreateAccountStepdefs {
 
     @Then("^he should be taken to a sign-up form view$")
     public void heShouldBeTakenToSignUpFormView() {
-        assertThat("after create account page is done, the behavior of the assert will be changed"
-                , createAccountSteps.doesContainCreateAccountPageLink());
+        createAccountSteps.isSignUpLinkDisplayed();
     }
 }

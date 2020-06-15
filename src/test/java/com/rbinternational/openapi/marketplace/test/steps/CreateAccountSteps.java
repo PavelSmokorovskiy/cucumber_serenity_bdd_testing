@@ -1,12 +1,16 @@
 package com.rbinternational.openapi.marketplace.test.steps;
 
+import com.rbinternational.openapi.marketplace.test.pages.AuthorizationPage;
 import com.rbinternational.openapi.marketplace.test.pages.MarketplacePortalHomePage;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
+import java.util.ArrayList;
+
 public class CreateAccountSteps extends UIInteractionSteps {
 
     private MarketplacePortalHomePage marketplacePortalHomePage;
+    private AuthorizationPage authorizationPage;
 
     @Step("Open the Marketplace Portal home page")
     public void openMarketplacePortalHome() {
@@ -19,7 +23,8 @@ public class CreateAccountSteps extends UIInteractionSteps {
     }
 
     @Step("Does button contain create account page link")
-    public boolean doesContainCreateAccountPageLink() {
-        return $(marketplacePortalHomePage.registerLoginButtonHref).isDisplayed();
+    public void isSignUpLinkDisplayed() {
+        getDriver().switchTo().window(new ArrayList<>(getDriver().getWindowHandles()).get(1));
+        $(authorizationPage.singUpLink).isDisplayed();
     }
 }
