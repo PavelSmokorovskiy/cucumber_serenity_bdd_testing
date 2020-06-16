@@ -1,5 +1,6 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
+import com.rbinternational.openapi.marketplace.test.steps.AuthorizationSteps;
 import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
 import com.rbinternational.openapi.marketplace.test.steps.UserLoginSteps;
 import io.cucumber.datatable.DataTable;
@@ -11,10 +12,16 @@ import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
+import static com.rbinternational.openapi.marketplace.test.steps.Service.switchToTheSecondTab;
+import static org.junit.Assert.assertTrue;
+
 public class UserLoginStepdefs {
 
     @Steps
     private MarketplacePortalHomeSteps marketplacePortalHomeSteps;
+
+    @Steps
+    private AuthorizationSteps authorizationSteps;
 
     @Steps
     private UserLoginSteps userLoginSteps;
@@ -28,20 +35,27 @@ public class UserLoginStepdefs {
     public void johnRequestsToLogIn() {
         marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
         marketplacePortalHomeSteps.clickRegisterLoginButton();
-        userLoginSteps.isInfoDisplayed();
+        switchToTheSecondTab();
+        authorizationSteps.isInfoDisplayed();
     }
 
     @And("he enters Email as \"<email>\" and Password as \"<password>\"")
-    public void test(DataTable table) {
+    public void heShouldWriteHisEmailAndPassword(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
-        userLoginSteps.writeEmail(rows.get(0).get(0));
-        userLoginSteps.writePassword(rows.get(0).get(1));
+        String email = rows.get(0).get(0);
+        String password = rows.get(0).get(1);
+        userLoginSteps.writeEmail(email);
+        userLoginSteps.writePassword(password);
     }
 
     @Then("^he should see his name and last name displayed confirming he is logged-in$")
-    public void heShouldSeeHisFirstAndLastName() {
-        userLoginSteps.isSignInButtonDisplayed();
+    public void heShouldSeeHisFirstAndLastName(DataTable table) {
+        List<List<String>> rows = table.asLists(String.class);
+        String email = rows.get(0).get(0);
+        String firstName = rows.get(0).get(0);
+        String lastName = rows.get(0).get(0);
+        authorizationSteps.isSignInButtonDisplayed();
         userLoginSteps.clickSingInButton();
-        userLoginSteps.isLogInSuccessful();
+        userLoginSteps.isLogInSuccessful(email, firstName, lastName);
     }
 }

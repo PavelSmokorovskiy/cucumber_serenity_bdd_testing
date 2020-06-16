@@ -1,6 +1,6 @@
 package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.steps.CreateAccountSteps;
+import com.rbinternational.openapi.marketplace.test.steps.AuthorizationSteps;
 import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +13,7 @@ public class CreateAccountStepdefs {
     private MarketplacePortalHomeSteps marketplacePortalHomeSteps;
 
     @Steps
-    private CreateAccountSteps createAccountSteps;
+    private AuthorizationSteps authorizationSteps;
 
     @Given("^John has opened the Marketplace Portal to create an account$")
     public void johnHasOpenedTheMarketplacePortalToCreateAnAccount() {
@@ -28,6 +28,7 @@ public class CreateAccountStepdefs {
 
     @Then("^he should be taken to a sign-up form view$")
     public void heShouldBeTakenToSignUpFormView() {
-        createAccountSteps.isSignUpLinkDisplayed();
+        authorizationSteps.isInfoDisplayed();
+        authorizationSteps.isSignUpLinkDisplayed();
     }
 }
