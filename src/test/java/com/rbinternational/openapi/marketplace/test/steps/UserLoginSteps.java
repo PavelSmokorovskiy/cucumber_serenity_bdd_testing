@@ -10,6 +10,11 @@ public class UserLoginSteps extends UIInteractionSteps {
 
     private AuthorizationPage authorizationPage;
 
+    @Step("Is info displayed")
+    public void isInfoDisplayed(){
+        isPageContains(authorizationPage.info);
+    }
+
     @Step("Is Sing Up link displayed")
     public void isSignInButtonDisplayed() {
         switchToTheSecondTab();
@@ -20,17 +25,36 @@ public class UserLoginSteps extends UIInteractionSteps {
     public void writeEmail(String text) {
         switchToTheSecondTab();
         $(authorizationPage.emailField).isDisplayed();
-        //TBD text writing
+        $(authorizationPage.emailField).type(text);
     }
 
     @Step("Write password to the field")
     public void writePassword(String text) {
         switchToTheSecondTab();
         $(authorizationPage.passwordField).isDisplayed();
-        //TBD text writing
+        $(authorizationPage.passwordField).type(text);
+    }
+
+    @Step("Click Sing in button")
+    public void clickSingInButton() {
+        switchToTheSecondTab();
+        getDriver().getPageSource().contains("Sign in with your email and password");
+        $(authorizationPage.singInButton).click();
+    }
+
+    @Step("Check username & password")
+    public void isLogInSuccessful() {
+        switchToTheSecondTab();
+        isPageContains(authorizationPage.email);
+        isPageContains(authorizationPage.firstName);
+        isPageContains(authorizationPage.lastName);
     }
 
     private void switchToTheSecondTab() {
         getDriver().switchTo().window(new ArrayList<String>(getDriver().getWindowHandles()).get(1));
+    }
+
+    private boolean isPageContains(String text) {
+        return getDriver().getPageSource().contains(text);
     }
 }

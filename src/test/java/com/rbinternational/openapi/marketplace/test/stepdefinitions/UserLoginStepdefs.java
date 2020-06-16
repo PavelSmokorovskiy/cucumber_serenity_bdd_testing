@@ -28,6 +28,7 @@ public class UserLoginStepdefs {
     public void johnRequestsToLogIn() {
         marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
         marketplacePortalHomeSteps.clickRegisterLoginButton();
+        userLoginSteps.isInfoDisplayed();
     }
 
     @And("he enters Email as \"<email>\" and Password as \"<password>\"")
@@ -39,7 +40,8 @@ public class UserLoginStepdefs {
 
     @Then("^he should see his name and last name displayed confirming he is logged-in$")
     public void heShouldSeeHisFirstAndLastName() {
-        //Temporary solution should be added with name and last name confirming
         userLoginSteps.isSignInButtonDisplayed();
+        userLoginSteps.clickSingInButton();
+        userLoginSteps.isLogInSuccessful();
     }
 }

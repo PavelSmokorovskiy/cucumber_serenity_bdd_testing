@@ -8,5 +8,5 @@ Feature: API-Marketplace user login
     Given John has opened the Marketplace Portal to log in
     When John requests to log in
     And he enters Email as "<email>" and Password as "<password>"
-      | email@example.com | password |
+      | pavlo.smokorovskiy-external@rbinternational.com | Qwerty123* |
     Then he should see his name and last name displayed confirming he is logged-in
