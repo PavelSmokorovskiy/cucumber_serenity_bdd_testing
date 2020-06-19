@@ -29,7 +29,7 @@ public class UserLoginSteps extends UIInteractionSteps {
     }
 
     @Step("Check username & password")
-    public void isLogInSuccessful(String email, String firstName, String lastName) {
-        assertTrue(isPageContains(email) & isPageContains(firstName) & isPageContains(lastName));
+    public void isLogInSuccessful(String firstName, String lastName) {
+        assertTrue(isPageContains(firstName) & isPageContains(lastName));
     }
 }

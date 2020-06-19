@@ -10,4 +10,4 @@ Feature: API-Marketplace user login
     And he enters Email as "<email>" and Password as "<password>"
       | pavlo.smokorovskiy-external@rbinternational.com | Qwerty123* |
     Then he should see his name and last name displayed confirming he is logged-in
-      | pavlo.smokorovskiy-external@rbinternational.com | Pavel | Smokorovskiy |
+      | Pavel | Smokorovskiy |

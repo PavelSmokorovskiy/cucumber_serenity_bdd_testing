@@ -56,6 +56,6 @@ public class UserLoginStepdefs {
         String lastName = rows.get(0).get(0);
         authorizationSteps.isSignInButtonDisplayed();
         userLoginSteps.clickSingInButton();
-        userLoginSteps.isLogInSuccessful(email, firstName, lastName);
+        userLoginSteps.isLogInSuccessful(firstName, lastName);
     }
 }
