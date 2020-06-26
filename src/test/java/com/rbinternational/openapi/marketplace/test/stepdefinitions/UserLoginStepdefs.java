@@ -33,10 +33,10 @@ public class UserLoginStepdefs {
     @When("^John requests to log in$")
     public void johnRequestsToLogIn() {
         marketplacePortalHomeSteps.clickRegisterLoginButton();
-        marketplacePortalHomeSteps.shouldNotBeClickableContinueButton();
-        marketplacePortalHomeSteps.clickGDPRCheckbox();
-        marketplacePortalHomeSteps.shouldBeClickableContinueButton();
-        marketplacePortalHomeSteps.clickContinueButton();
+        authorizationSteps.shouldNotBeClickableContinueButton();
+        authorizationSteps.clickGDPRCheckbox();
+        authorizationSteps.shouldBeClickableContinueButton();
+        authorizationSteps.clickContinueButton();
         switchToTheSecondTab();
         authorizationSteps.isInfoDisplayed();
     }

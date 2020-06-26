@@ -1,15 +1,11 @@
 package com.rbinternational.openapi.marketplace.test.steps;
 
 import com.rbinternational.openapi.marketplace.test.pages.MarketplacePortalHomePage;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MarketplacePortalHomeSteps extends UIInteractionSteps {
 
@@ -29,26 +25,6 @@ public class MarketplacePortalHomeSteps extends UIInteractionSteps {
     @Step("Click the Register/Login button")
     public void clickRegisterLoginButton() {
         $(marketplacePortalHomePage.registerLoginButton).click();
-    }
-
-    @Step("Continue button should not be clickable")
-    public void shouldNotBeClickableContinueButton() {
-        $(marketplacePortalHomePage.continueButton).isDisabled();
-    }
-
-    @Step("Click the GDPR checkbox")
-    public void clickGDPRCheckbox() {
-        $(marketplacePortalHomePage.gDPRCheckbox).click();
-    }
-
-    @Step("Continue button should be clickable")
-    public void shouldBeClickableContinueButton() {
-        $(marketplacePortalHomePage.continueButton).isClickable();
-    }
-
-    @Step("Click the Continue button")
-    public void clickContinueButton() {
-        $(marketplacePortalHomePage.continueButton).click();
     }
 
     public URL getHrefOfRegisterLoginButton() throws MalformedURLException {

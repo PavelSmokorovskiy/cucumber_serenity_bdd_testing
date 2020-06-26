@@ -8,12 +8,11 @@ Feature: Overview Api Categories
     Given John has opened the Marketplace Portal
     When John requests a list of API-categories
     Then he should see on overview of the following API<categories>
-      | Customer Information        |
-      | ERP Integration             |
-      | Payments                    |
-      | Confirmation of Funds       |
-      | Currency                    |
-      | General Information Service |
-      | Authorization               |
-      | Lead Generation             |
-      | Accounts                    |
+      | Customer Identity             |
+      | Management System Integration |
+      | Payment transfers             |
+      | Financial resources check     |
+      | Foreign exchange rates        |
+      | ATM & Branch locations        |
+      | Visitors to sales             |
+      | Account insights              |

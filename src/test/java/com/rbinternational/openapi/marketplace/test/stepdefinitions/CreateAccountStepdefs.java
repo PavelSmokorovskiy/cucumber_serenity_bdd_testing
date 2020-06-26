@@ -2,6 +2,7 @@ package com.rbinternational.openapi.marketplace.test.stepdefinitions;
 
 import com.rbinternational.openapi.marketplace.test.steps.AuthorizationSteps;
 import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,10 +26,14 @@ public class CreateAccountStepdefs {
     @When("^John requests to sign up$")
     public void johnRequestsToSignUp() {
         marketplacePortalHomeSteps.clickRegisterLoginButton();
-        marketplacePortalHomeSteps.shouldNotBeClickableContinueButton();
-        marketplacePortalHomeSteps.clickGDPRCheckbox();
-        marketplacePortalHomeSteps.shouldBeClickableContinueButton();
-        marketplacePortalHomeSteps.clickContinueButton();
+    }
+
+    @And("^he should accept GDPR notice$")
+    public void heShouldAcceptGDPRNotice() {
+        authorizationSteps.shouldNotBeClickableContinueButton();
+        authorizationSteps.clickGDPRCheckbox();
+        authorizationSteps.shouldBeClickableContinueButton();
+        authorizationSteps.clickContinueButton();
     }
 
     @Then("^he should be taken to a sign-up form view$")

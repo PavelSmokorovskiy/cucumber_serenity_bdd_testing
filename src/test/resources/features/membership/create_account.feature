@@ -7,4 +7,5 @@ Feature: Create API-Marketplace account
   Scenario: Sign Up
     Given John has opened the Marketplace Portal to create an account
     When John requests to sign up
+    And he should accept GDPR notice
     Then he should be taken to a sign-up form view

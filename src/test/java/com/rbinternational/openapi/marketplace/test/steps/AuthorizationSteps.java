@@ -12,6 +12,26 @@ public class AuthorizationSteps extends UIInteractionSteps {
 
     private AuthorizationPage authorizationPage;
 
+    @Step("Continue button should not be clickable")
+    public void shouldNotBeClickableContinueButton() {
+        $(authorizationPage.continueButton).isDisabled();
+    }
+
+    @Step("Click the GDPR checkbox")
+    public void clickGDPRCheckbox() {
+        $(authorizationPage.gDPRCheckbox).click();
+    }
+
+    @Step("Continue button should be clickable")
+    public void shouldBeClickableContinueButton() {
+        $(authorizationPage.continueButton).isClickable();
+    }
+
+    @Step("Click the Continue button")
+    public void clickContinueButton() {
+        $(authorizationPage.continueButton).click();
+    }
+
     @Step("Is info displayed")
     public void isInfoDisplayed() {
         assertTrue(isPageContains(authorizationPage.info));
