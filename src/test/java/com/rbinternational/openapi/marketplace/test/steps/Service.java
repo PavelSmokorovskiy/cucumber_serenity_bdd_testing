@@ -11,6 +11,11 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver
 public class Service {
 
     public static void switchToTheSecondTab() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         new WebDriverWait(getDriver(), 3) {
         }.until((ExpectedCondition<Boolean>) driver ->
                 (Objects.requireNonNull(driver).getWindowHandles().size() > 1));

@@ -29,7 +29,6 @@ public class OverviewApiCategoriesStepdefs {
 
     @When("^John requests a list of API-categories$")
     public void johnRequestsAListOfAPICategories() {
-        marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
         marketplacePortalHomeSteps.clickAPICategoriesButton();
         apiCards = apiCategoriesSteps.findAPICategories();
     }

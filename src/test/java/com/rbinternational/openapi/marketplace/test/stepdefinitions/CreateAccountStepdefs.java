@@ -24,8 +24,11 @@ public class CreateAccountStepdefs {
 
     @When("^John requests to sign up$")
     public void johnRequestsToSignUp() {
-        marketplacePortalHomeSteps.waitForAngularRequestsToFinish();
         marketplacePortalHomeSteps.clickRegisterLoginButton();
+        marketplacePortalHomeSteps.shouldNotBeClickableContinueButton();
+        marketplacePortalHomeSteps.clickGDPRCheckbox();
+        marketplacePortalHomeSteps.shouldBeClickableContinueButton();
+        marketplacePortalHomeSteps.clickContinueButton();
     }
 
     @Then("^he should be taken to a sign-up form view$")

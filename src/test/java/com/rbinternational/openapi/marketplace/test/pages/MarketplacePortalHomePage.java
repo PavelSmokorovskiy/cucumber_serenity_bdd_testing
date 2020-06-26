@@ -7,5 +7,9 @@ public class MarketplacePortalHomePage extends PageObject {
 
     public final By apiCategoriesLink = By.cssSelector("a.header__link");
 
-    public final By registerLoginButton = By.cssSelector("a.uk-button-default");
+    public final By registerLoginButton = By.cssSelector("a.uk-button-primary");
+
+    public final By gDPRCheckbox = By.cssSelector("input.uk-checkbox");
+
+    public final By continueButton = By.cssSelector("a.uk-button-default");
 }
