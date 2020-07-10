@@ -4,9 +4,6 @@ import com.rbinternational.openapi.marketplace.test.pages.MarketplacePortalHomeP
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class MarketplacePortalHomeSteps extends UIInteractionSteps {
 
     private MarketplacePortalHomePage marketplacePortalHomePage;
@@ -17,18 +14,14 @@ public class MarketplacePortalHomeSteps extends UIInteractionSteps {
         waitForAngularRequestsToFinish();
     }
 
-    @Step("Click the API Categories button")
-    public void clickAPICategoriesButton() {
-        $(marketplacePortalHomePage.apiCategoriesLink).click();
+    @Step("Click the APIS button")
+    public void clickAPISButton() {
+        $(marketplacePortalHomePage.apisLink).click();
     }
 
     @Step("Click the Register/Login button")
     public void clickRegisterLoginButton() {
         $(marketplacePortalHomePage.registerLoginButton).click();
-    }
-
-    public URL getHrefOfRegisterLoginButton() throws MalformedURLException {
-        return new URL($(marketplacePortalHomePage.registerLoginButton).getAttribute("href"));
     }
 
     @Step("Register/Login button is displayed")

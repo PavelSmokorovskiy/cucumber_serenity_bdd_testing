@@ -1,10 +1,16 @@
 package com.rbinternational.openapi.marketplace.test.steps;
 
 import com.rbinternational.openapi.marketplace.test.pages.AuthorizationPage;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.*;
+import static com.rbinternational.openapi.marketplace.test.steps.Service.isPageContains;
+import static com.rbinternational.openapi.marketplace.test.steps.Service.saveCookies;
+import static com.rbinternational.openapi.marketplace.test.steps.Service.switchToTheSecondTab;
 import static org.junit.Assert.assertTrue;
 
 public class AuthorizationSteps extends UIInteractionSteps {
@@ -30,6 +36,11 @@ public class AuthorizationSteps extends UIInteractionSteps {
     public void clickContinueButton() {
         $(authorizationPage.continueButton).click();
         saveCookies();
+    }
+
+    @Step("Get Href of Continue button")
+    public URL getHrefOfContinueButton() throws MalformedURLException {
+        return new URL($(authorizationPage.continueButton).getAttribute("href"));
     }
 
     @Step("Is info displayed")

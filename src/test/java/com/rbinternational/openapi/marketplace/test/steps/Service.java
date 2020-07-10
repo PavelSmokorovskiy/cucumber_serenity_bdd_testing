@@ -17,11 +17,11 @@ public class Service {
 
     public static void switchToTheSecondTab() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        new WebDriverWait(getDriver(), 3) {
+        new WebDriverWait(getDriver(), 15) {
         }.until((ExpectedCondition<Boolean>) driver ->
                 (Objects.requireNonNull(driver).getWindowHandles().size() > 1));
         getDriver().switchTo().window(new ArrayList<>(getDriver().getWindowHandles()).get(1));

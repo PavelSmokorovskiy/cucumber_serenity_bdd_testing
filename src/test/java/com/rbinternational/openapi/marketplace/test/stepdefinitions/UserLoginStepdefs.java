@@ -35,6 +35,10 @@ public class UserLoginStepdefs {
     public void johnRequestsToLogIn() {
         restoreCookies();
         marketplacePortalHomeSteps.clickRegisterLoginButton();
+        authorizationSteps.shouldNotBeClickableContinueButton();
+        authorizationSteps.clickGDPRCheckbox();
+        authorizationSteps.shouldBeClickableContinueButton();
+        authorizationSteps.clickContinueButton();
         switchToTheSecondTab();
         authorizationSteps.isInfoDisplayed();
     }

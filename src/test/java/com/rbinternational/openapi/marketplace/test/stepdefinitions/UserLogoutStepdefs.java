@@ -39,8 +39,12 @@ public class UserLogoutStepdefs {
     String password = rows.get(0).get(1);
 
     marketplacePortalHomeSteps.openMarketplacePortalHome();
-    registerButtonUrl = marketplacePortalHomeSteps.getHrefOfRegisterLoginButton();
     marketplacePortalHomeSteps.clickRegisterLoginButton();
+    authorizationSteps.shouldNotBeClickableContinueButton();
+    authorizationSteps.clickGDPRCheckbox();
+    authorizationSteps.shouldBeClickableContinueButton();
+    registerButtonUrl = authorizationSteps.getHrefOfContinueButton();
+    authorizationSteps.clickContinueButton();
     switchToTheSecondTab();
     authorizationSteps.isInfoDisplayed();
 
