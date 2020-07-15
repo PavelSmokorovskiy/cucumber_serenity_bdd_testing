@@ -5,7 +5,7 @@ Feature: API-Marketplace user logout
 
   Background: User session exists
     Given Pavel is logged in on the portal with the following credentials
-      | pavlo.smokorovskiy-external@rbinternational.com | Qwerty123* |
+      | pavlo.smokorovskiy-external@rbinternational.com | Qwerty123$ |
     And his first name and last name are displayed confirming he is logged-in
       | Pavel | Smokorovskiy |
 

@@ -11,6 +11,8 @@ import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
+import static com.rbinternational.openapi.marketplace.test.steps.Service.clickTheButtonByName;
+import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 
@@ -25,34 +27,31 @@ public class OverviewApiProvidersStepdefs {
     @Steps
     private APICategoriesSteps apiCategoriesSteps;
 
-    private List<String> providersLeftPanel;
-
     private String lastCheckedProvider;
 
-    @Given("^John has opened the Marketplace PortalP$")
-    public void johnHasOpenedTheMarketplacePortal() {
+    @Given("^John has requested a list of API-providers$")
+    public void johnHasRequestedAListOfAPIProviders() {
         marketplacePortalHomeSteps.openMarketplacePortalHome();
-    }
-
-    @When("^John requests a list of API-Providers$")
-    public void johnRequestsAListOfAPIProviders() {
+        pause10Seconds();
         marketplacePortalHomeSteps.clickAPISButton();
         apiProvidersSteps.clickProviderPlusButton();
-        providersLeftPanel = apiProvidersSteps.findAPIProviders();
+        pause10Seconds();
     }
 
-    @Then("he should see on the left panel following API<providers>")
+    @And("^the following list of API<providers> is displayed$")
     public void heShouldSeeOnTheLeftPanelFollowingAPIProviders(List<String> providers) {
+        List<String> providersLeftPanel = apiProvidersSteps.findAPIProviders();
         assertThat("Match left panel providers", providersLeftPanel, containsInAnyOrder(providers.toArray()));
     }
 
-    @And("he opens <provider>")
+    @When("^he opens <provider>$")
     public void heOpensFirst(String provider) {
         lastCheckedProvider = provider;
-        apiProvidersSteps.clickProviderButton(provider);
+        clickTheButtonByName(provider);
+        pause10Seconds();
     }
 
-    @Then("he should see on overview of the following API<providers>")
+    @Then("^he should see on overview of the following API<providers>$")
     public void heShouldSeeOnOverviewOfTheFollowingAPIProviders(List<String> providers) {
         List<String> apiCategories = apiCategoriesSteps.findAPICategories();
         assertThat("Match cards with " + lastCheckedProvider + " provider", apiCategories, containsInAnyOrder(providers.toArray()));

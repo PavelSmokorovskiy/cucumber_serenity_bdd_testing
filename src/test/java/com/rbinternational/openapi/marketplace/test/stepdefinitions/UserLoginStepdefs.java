@@ -12,8 +12,7 @@ import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.restoreCookies;
-import static com.rbinternational.openapi.marketplace.test.steps.Service.switchToTheSecondTab;
+import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
 
 public class UserLoginStepdefs {
 
@@ -33,13 +32,11 @@ public class UserLoginStepdefs {
 
     @When("^John requests to log in$")
     public void johnRequestsToLogIn() {
-        restoreCookies();
         marketplacePortalHomeSteps.clickRegisterLoginButton();
         authorizationSteps.shouldNotBeClickableContinueButton();
         authorizationSteps.clickGDPRCheckbox();
         authorizationSteps.shouldBeClickableContinueButton();
         authorizationSteps.clickContinueButton();
-        switchToTheSecondTab();
         authorizationSteps.isInfoDisplayed();
     }
 
@@ -59,7 +56,7 @@ public class UserLoginStepdefs {
         String lastName = rows.get(0).get(0);
         authorizationSteps.isSignInButtonDisplayed();
         userLoginSteps.clickSingInButton();
-        switchToTheSecondTab();
+        pause10Seconds();
         userLoginSteps.isLogInSuccessful(firstName, lastName);
     }
 }

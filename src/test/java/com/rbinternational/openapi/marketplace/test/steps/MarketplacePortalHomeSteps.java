@@ -11,7 +11,6 @@ public class MarketplacePortalHomeSteps extends UIInteractionSteps {
     @Step("Open the Marketplace Portal home page")
     public void openMarketplacePortalHome() {
         marketplacePortalHomePage.open();
-        waitForAngularRequestsToFinish();
     }
 
     @Step("Click the APIS button")

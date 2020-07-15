@@ -8,7 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.switchToTheSecondTab;
+import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
 
 public class CreateAccountStepdefs {
 
@@ -38,7 +38,7 @@ public class CreateAccountStepdefs {
 
     @Then("^he should be taken to a sign-up form view$")
     public void heShouldBeTakenToSignUpFormView() {
-        switchToTheSecondTab();
+        pause10Seconds();
         authorizationSteps.isInfoDisplayed();
         authorizationSteps.isSignUpLinkDisplayed();
     }

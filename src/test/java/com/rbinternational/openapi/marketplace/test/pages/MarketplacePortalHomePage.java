@@ -7,5 +7,5 @@ public class MarketplacePortalHomePage extends PageObject {
 
     public final By apisLink = By.cssSelector("a.header__link");
 
-    public final By registerLoginButton = By.cssSelector("a.uk-button-primary");
+    public final By registerLoginButton = By.cssSelector("button.uk-button-primary");
 }

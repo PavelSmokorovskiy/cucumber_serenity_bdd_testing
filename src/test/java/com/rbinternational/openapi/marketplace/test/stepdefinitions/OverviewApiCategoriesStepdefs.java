@@ -20,8 +20,6 @@ public class OverviewApiCategoriesStepdefs {
     @Steps
     private APICategoriesSteps apiCategoriesSteps;
 
-    private List<String> categoryCards;
-
     @Given("^John has opened the Marketplace Portal$")
     public void johnHasOpenedTheMarketplacePortal() {
         marketplacePortalHomeSteps.openMarketplacePortalHome();
@@ -30,11 +28,11 @@ public class OverviewApiCategoriesStepdefs {
     @When("^John requests a list of API-categories$")
     public void johnRequestsAListOfAPICategories() {
         marketplacePortalHomeSteps.clickAPISButton();
-        categoryCards = apiCategoriesSteps.findAPICategories();
     }
 
     @Then("he should see on overview of the following API<categories>")
     public void heShouldSeeOnOverviewOfTheFollowingAPICategories(List<String> categories) {
+        List<String> categoryCards = apiCategoriesSteps.findAPICategories();
         assertThat("Match categories", categoryCards, containsInAnyOrder(categories.toArray()));
     }
 }

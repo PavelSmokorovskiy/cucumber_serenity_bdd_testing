@@ -9,8 +9,6 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
 import static com.rbinternational.openapi.marketplace.test.steps.Service.isPageContains;
-import static com.rbinternational.openapi.marketplace.test.steps.Service.saveCookies;
-import static com.rbinternational.openapi.marketplace.test.steps.Service.switchToTheSecondTab;
 import static org.junit.Assert.assertTrue;
 
 public class AuthorizationSteps extends UIInteractionSteps {
@@ -35,7 +33,6 @@ public class AuthorizationSteps extends UIInteractionSteps {
     @Step("Click the Continue button")
     public void clickContinueButton() {
         $(authorizationPage.continueButton).click();
-        saveCookies();
     }
 
     @Step("Get Href of Continue button")
@@ -50,7 +47,6 @@ public class AuthorizationSteps extends UIInteractionSteps {
 
     @Step("Is Sing Up link displayed")
     public void isSignUpLinkDisplayed() {
-        switchToTheSecondTab();
         $(authorizationPage.singUpLink).isDisplayed();
     }
 

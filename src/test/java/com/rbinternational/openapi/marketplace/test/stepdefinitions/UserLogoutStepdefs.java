@@ -14,8 +14,6 @@ import java.net.URL;
 import java.util.List;
 import net.thucydides.core.annotations.Steps;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.switchToTheSecondTab;
-
 public class UserLogoutStepdefs {
 
   @Steps
@@ -45,14 +43,14 @@ public class UserLogoutStepdefs {
     authorizationSteps.shouldBeClickableContinueButton();
     registerButtonUrl = authorizationSteps.getHrefOfContinueButton();
     authorizationSteps.clickContinueButton();
-    switchToTheSecondTab();
+//    switchToTheSecondTab();
     authorizationSteps.isInfoDisplayed();
 
     userLoginSteps.writeEmail(email);
     userLoginSteps.writePassword(password);
     authorizationSteps.isSignInButtonDisplayed();
     userLoginSteps.clickSingInButton();
-    switchToTheSecondTab();
+//    switchToTheSecondTab();
   }
 
   @And("^his first name and last name are displayed confirming he is logged-in$")

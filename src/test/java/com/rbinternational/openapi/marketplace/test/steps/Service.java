@@ -1,5 +1,6 @@
 package com.rbinternational.openapi.marketplace.test.steps;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,13 +16,17 @@ public class Service {
 
     private static Set<Cookie> cookies = new HashSet<>();
 
-    public static void switchToTheSecondTab() {
+    public static void pause10Seconds() {
         try {
-            Thread.sleep(15000);
+            Thread.sleep(10_000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        new WebDriverWait(getDriver(), 15) {
+    }
+
+    public static void switchToTheSecondTab() {
+        pause10Seconds();
+        new WebDriverWait(getDriver(), 10) {
         }.until((ExpectedCondition<Boolean>) driver ->
                 (Objects.requireNonNull(driver).getWindowHandles().size() > 1));
         getDriver().switchTo().window(new ArrayList<>(getDriver().getWindowHandles()).get(1));
@@ -37,5 +42,9 @@ public class Service {
 
     public static void restoreCookies() {
         cookies.forEach(cookie -> getDriver().manage().addCookie(cookie));
+    }
+
+    public static void clickTheButtonByName(String buttonName) {
+        getDriver().findElement(By.linkText(buttonName)).click();
     }
 }
