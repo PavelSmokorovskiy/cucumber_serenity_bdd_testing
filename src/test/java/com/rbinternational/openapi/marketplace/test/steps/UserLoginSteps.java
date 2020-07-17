@@ -1,6 +1,7 @@
 package com.rbinternational.openapi.marketplace.test.steps;
 
 import com.rbinternational.openapi.marketplace.test.pages.AuthorizationPage;
+import com.rbinternational.openapi.marketplace.test.pages.MarketplacePortalHomePage;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 

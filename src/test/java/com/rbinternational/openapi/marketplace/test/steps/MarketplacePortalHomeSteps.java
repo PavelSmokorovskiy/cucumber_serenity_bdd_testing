@@ -4,6 +4,9 @@ import com.rbinternational.openapi.marketplace.test.pages.MarketplacePortalHomeP
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
+
 public class MarketplacePortalHomeSteps extends UIInteractionSteps {
 
     private MarketplacePortalHomePage marketplacePortalHomePage;
@@ -23,8 +26,18 @@ public class MarketplacePortalHomeSteps extends UIInteractionSteps {
         $(marketplacePortalHomePage.registerLoginButton).click();
     }
 
+    @Step("Click the Logout button")
+    public void clickLogoutButton() {
+        $(marketplacePortalHomePage.logoutButton).click();
+    }
+
     @Step("Register/Login button is displayed")
     public void registerLoginButtonDisplayed() {
-        $(marketplacePortalHomePage.registerLoginButton).isDisplayed();
+        assertThat("Check if Register/Login button displayed", $(marketplacePortalHomePage.registerLoginButton).getText(), equalToIgnoringCase(marketplacePortalHomePage.registerLoginButtonName));
+    }
+
+    @Step("Logout button is displayed")
+    public void logoutButtonDisplayed() {
+        assertThat("Check if Logout button displayed", $(marketplacePortalHomePage.logoutButton).getText(), equalToIgnoringCase(marketplacePortalHomePage.logoutButtonName));
     }
 }

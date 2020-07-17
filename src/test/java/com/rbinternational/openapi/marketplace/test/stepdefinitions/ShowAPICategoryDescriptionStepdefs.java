@@ -28,22 +28,20 @@ public class ShowApiCategoryDescriptionStepdefs {
     @Given("^John has opened the API-category overview$")
     public void johnHasOpenedTheAPICategoryOverview() {
         marketplacePortalHomeSteps.openMarketplacePortalHome();
-//        pause10Seconds();
+        pause10Seconds();
         marketplacePortalHomeSteps.clickAPISButton();
-//        pause10Seconds();
     }
 
     @When("^John selects the API<category>$")
     public void johnSelectsTheApiCategory(String category) {
         apiCategoriesDescriptionsSteps.clickTheCategoryButton(category);
-//        pause10Seconds();
     }
 
     @Then("^he should see on overview of the following API<category>$")
     public void heShouldSeeOnOverviewOfTheFollowingAPI(List<String> category) {
+        pause10Seconds();
         List<String> categoriesOverview = apiCategoriesSteps.findAPICategories();
         assertThat("Match filtered category overview", categoriesOverview, containsInAnyOrder(category.toArray()));
-//        pause10Seconds();
         apiCategoriesDescriptionsSteps.clickTheMoreLink(category.get(0));
     }
 

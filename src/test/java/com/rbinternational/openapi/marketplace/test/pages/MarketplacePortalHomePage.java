@@ -7,5 +7,12 @@ public class MarketplacePortalHomePage extends PageObject {
 
     public final By apisLink = By.cssSelector("a.header__link");
 
-    public final By registerLoginButton = By.cssSelector("button.uk-button-primary");
+    public final By registerLoginButton = By.cssSelector("mapi-button.header__button--authorize");
+
+    public final String registerLoginButtonName = "REGISTER/LOGIN";
+
+    public final By logoutButton = By.cssSelector("mapi-button.header__button--logout");
+
+    public final String logoutButtonName = "LOGOUT";
+
 }

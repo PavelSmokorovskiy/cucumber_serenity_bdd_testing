@@ -5,14 +5,16 @@ import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeS
 import com.rbinternational.openapi.marketplace.test.steps.UserLoginSteps;
 import com.rbinternational.openapi.marketplace.test.steps.UserLogoutSteps;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.thucydides.core.annotations.Steps;
+
 import java.net.URL;
 import java.util.List;
-import net.thucydides.core.annotations.Steps;
+
+import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
 
 public class UserLogoutStepdefs {
 
@@ -37,51 +39,51 @@ public class UserLogoutStepdefs {
     String password = rows.get(0).get(1);
 
     marketplacePortalHomeSteps.openMarketplacePortalHome();
+    marketplacePortalHomeSteps.registerLoginButtonDisplayed();
     marketplacePortalHomeSteps.clickRegisterLoginButton();
-    authorizationSteps.shouldNotBeClickableContinueButton();
-    authorizationSteps.clickGDPRCheckbox();
-    authorizationSteps.shouldBeClickableContinueButton();
-    registerButtonUrl = authorizationSteps.getHrefOfContinueButton();
-    authorizationSteps.clickContinueButton();
-//    switchToTheSecondTab();
-    authorizationSteps.isInfoDisplayed();
-
-    userLoginSteps.writeEmail(email);
-    userLoginSteps.writePassword(password);
-    authorizationSteps.isSignInButtonDisplayed();
-    userLoginSteps.clickSingInButton();
-//    switchToTheSecondTab();
+    if(authorizationSteps.isGDPRCheckboxDisplayed()) {
+      authorizationSteps.shouldNotBeClickableContinueButton();
+      authorizationSteps.clickGDPRCheckbox();
+      authorizationSteps.shouldBeClickableContinueButton();
+      registerButtonUrl = authorizationSteps.getHrefOfContinueButton();
+      authorizationSteps.clickContinueButton();
+      pause10Seconds();
+      authorizationSteps.isInfoDisplayed();
+      userLoginSteps.writeEmail(email);
+      userLoginSteps.writePassword(password);
+      authorizationSteps.isSignInButtonDisplayed();
+      userLoginSteps.clickSingInButton();
+    }
+    marketplacePortalHomeSteps.logoutButtonDisplayed();
   }
 
   @And("^his first name and last name are displayed confirming he is logged-in$")
-  public void hisFirstNameAndLastNameAreDisplayed(DataTable table) throws Throwable {
+  public void hisFirstNameAndLastNameAreDisplayed(DataTable table) {
     List<List<String>> rows = table.asLists(String.class);
     String firstName = rows.get(0).get(0);
     String lastName = rows.get(0).get(1);
+    pause10Seconds();
     userLoginSteps.isLogInSuccessful(firstName, lastName);
   }
 
   @When("^Pavel's web session expires$")
-  public void johnSWebSessionExpires() throws Throwable {
+  public void johnSWebSessionExpires() {
     logoutSteps.deleteCookies(registerButtonUrl);
   }
 
   @Then("^he should be prompted to re-login$")
-  public void heShouldBePromptedToReLogin() throws Throwable {
+  public void heShouldBePromptedToReLogin() {
     marketplacePortalHomeSteps.openMarketplacePortalHome();
     marketplacePortalHomeSteps.registerLoginButtonDisplayed();
   }
 
   @When("^Pavel requests to log out$")
-  public void johnRequestsToLogOut() throws Throwable {
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException();
+  public void johnRequestsToLogOut() {
+    marketplacePortalHomeSteps.clickLogoutButton();
   }
 
   @Then("^he should be sent to the landing page$")
-  public void heShouldBeSentToTheLandingPage() throws Throwable {
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException();
+  public void heShouldBeSentToTheLandingPage() {
+    marketplacePortalHomeSteps.registerLoginButtonDisplayed();
   }
-
 }

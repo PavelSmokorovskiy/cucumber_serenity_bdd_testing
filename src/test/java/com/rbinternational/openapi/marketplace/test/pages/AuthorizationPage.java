@@ -7,7 +7,9 @@ public class AuthorizationPage extends PageObject {
 
     public final By gDPRCheckbox = By.cssSelector("input.uk-checkbox");
 
-    public final By continueButton = By.cssSelector("mapi-button.ng-star-inserted");
+    public final By continueButton = By.cssSelector("a.uk-button-default");
+
+    public final By continueButtonHidden = By.cssSelector("mapi-button.ng-star-inserted");
 
     public final By singInButton = By.xpath("//div[@class='modal-content background-customizable modal-content-mobile visible-md visible-lg']//div[@class='modal-body']//div//div//div//div//input[@name='signInSubmitButton']");
 
