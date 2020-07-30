@@ -1,7 +1,7 @@
-package com.rbinternational.openapi.marketplace.test.stepdefinitions;
+package stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.steps.APICategoriesSteps;
-import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
+import steps.APICategoriesSteps;
+import steps.MarketplacePortalHomeSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

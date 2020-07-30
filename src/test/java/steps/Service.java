@@ -1,4 +1,4 @@
-package com.rbinternational.openapi.marketplace.test.steps;
+package steps;
 
 import org.openqa.selenium.By;
 

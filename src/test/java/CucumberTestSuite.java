@@ -1,5 +1,3 @@
-package com.rbinternational.openapi.marketplace.test;
-
 import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;

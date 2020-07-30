@@ -1,6 +1,6 @@
-package com.rbinternational.openapi.marketplace.test.stepdefinitions;
+package stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.steps.*;
+import steps.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +9,7 @@ import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
+import static steps.Service.pause10Seconds;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalToIgnoringCase;

@@ -1,8 +1,8 @@
-package com.rbinternational.openapi.marketplace.test.stepdefinitions;
+package stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.steps.APICategoriesSteps;
-import com.rbinternational.openapi.marketplace.test.steps.APIProvidersSteps;
-import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
+import steps.APICategoriesSteps;
+import steps.APIProvidersSteps;
+import steps.MarketplacePortalHomeSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,8 +11,8 @@ import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.clickTheButtonByName;
-import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
+import static steps.Service.clickTheButtonByName;
+import static steps.Service.pause10Seconds;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 

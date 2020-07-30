@@ -1,9 +1,9 @@
-package com.rbinternational.openapi.marketplace.test.stepdefinitions;
+package stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.steps.AuthorizationSteps;
-import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
-import com.rbinternational.openapi.marketplace.test.steps.UserLoginSteps;
-import com.rbinternational.openapi.marketplace.test.steps.UserLogoutSteps;
+import steps.AuthorizationSteps;
+import steps.MarketplacePortalHomeSteps;
+import steps.UserLoginSteps;
+import steps.UserLogoutSteps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,7 +14,7 @@ import net.thucydides.core.annotations.Steps;
 import java.net.URL;
 import java.util.List;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
+import static steps.Service.pause10Seconds;
 
 public class UserLogoutStepdefs {
 

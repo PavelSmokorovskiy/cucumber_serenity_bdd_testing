@@ -1,11 +1,10 @@
-package com.rbinternational.openapi.marketplace.test.steps;
+package steps;
 
-import com.rbinternational.openapi.marketplace.test.pages.AuthorizationPage;
-import com.rbinternational.openapi.marketplace.test.pages.MarketplacePortalHomePage;
+import pages.AuthorizationPage;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.isPageContains;
+import static steps.Service.isPageContains;
 import static org.junit.Assert.assertTrue;
 
 public class UserLoginSteps extends UIInteractionSteps {

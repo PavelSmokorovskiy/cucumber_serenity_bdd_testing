@@ -1,4 +1,4 @@
-package com.rbinternational.openapi.marketplace.test.steps;
+package steps;
 
 import java.net.URL;
 import net.serenitybdd.core.steps.UIInteractionSteps;

@@ -1,6 +1,6 @@
-package com.rbinternational.openapi.marketplace.test.steps;
+package steps;
 
-import com.rbinternational.openapi.marketplace.test.pages.AuthorizationPage;
+import pages.AuthorizationPage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,7 +8,7 @@ import java.net.URL;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.isPageContains;
+import static steps.Service.isPageContains;
 import static org.junit.Assert.assertTrue;
 
 public class AuthorizationSteps extends UIInteractionSteps {

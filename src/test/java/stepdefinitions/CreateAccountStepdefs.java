@@ -1,14 +1,14 @@
-package com.rbinternational.openapi.marketplace.test.stepdefinitions;
+package stepdefinitions;
 
-import com.rbinternational.openapi.marketplace.test.steps.AuthorizationSteps;
-import com.rbinternational.openapi.marketplace.test.steps.MarketplacePortalHomeSteps;
+import steps.AuthorizationSteps;
+import steps.MarketplacePortalHomeSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
-import static com.rbinternational.openapi.marketplace.test.steps.Service.pause10Seconds;
+import static steps.Service.pause10Seconds;
 
 public class CreateAccountStepdefs {
 

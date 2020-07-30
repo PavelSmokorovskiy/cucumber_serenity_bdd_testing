@@ -1,4 +1,4 @@
-package com.rbinternational.openapi.marketplace.test.pages;
+package pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
