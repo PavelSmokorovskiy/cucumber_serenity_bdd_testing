@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 
-public class ShowApiCategoryDescriptionStepdefs {
+public class ShowAPICategoryDescriptionStepdefs {
 
     @Steps
     private MarketplacePortalHomeSteps marketplacePortalHomeSteps;
